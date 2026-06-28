@@ -1,0 +1,126 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --primary: #667eea;
+  --primary-dark: #5a67d8;
+  --secondary: #764ba2;
+  --bg: #f0f2f5;
+  --surface: #ffffff;
+  --border: #e1e4e8;
+  --text: #1a1a2e;
+  --text-muted: #6b7280;
+  --radius: 12px;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  background-color: var(--bg);
+  color: var(--text);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+@layer components {
+  .btn-primary {
+    @apply bg-gradient-to-r from-primary-500 to-secondary-500 text-white font-semibold px-6 py-2.5 rounded-xl hover:opacity-90 active:scale-95 transition-all duration-200 shadow-button;
+  }
+  .btn-secondary {
+    @apply bg-white text-primary-600 border border-primary-200 font-semibold px-6 py-2.5 rounded-xl hover:bg-primary-50 active:scale-95 transition-all duration-200;
+  }
+  .btn-ghost {
+    @apply text-gray-600 font-medium px-4 py-2 rounded-xl hover:bg-gray-100 active:scale-95 transition-all duration-200;
+  }
+  .card {
+    @apply bg-white rounded-2xl shadow-card p-4 border border-gray-100;
+  }
+  .input-field {
+    @apply w-full px-4 py-3 rounded-xl border border-gray-200 bg-gray-50 focus:bg-white focus:outline-none focus:ring-2 focus:ring-primary-300 focus:border-primary-400 transition-all duration-200 text-gray-800 placeholder-gray-400;
+  }
+  .avatar {
+    @apply rounded-full object-cover bg-gradient-to-br from-primary-400 to-secondary-500;
+  }
+  .badge {
+    @apply inline-flex items-center justify-center text-xs font-bold rounded-full;
+  }
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: #c5c7d4; border-radius: 99px; }
+::-webkit-scrollbar-thumb:hover { background: #a0a3b1; }
+
+/* Animated gradient text */
+.gradient-text {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Story ring */
+.story-ring {
+  background: linear-gradient(135deg, #667eea, #764ba2, #f093fb);
+  padding: 2px;
+  border-radius: 50%;
+}
+
+/* Post media */
+.post-media {
+  @apply w-full rounded-xl overflow-hidden;
+  max-height: 500px;
+  object-fit: cover;
+}
+
+/* Glass effect */
+.glass {
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+/* Animated notification dot */
+@keyframes ping-dot {
+  0% { transform: scale(1); opacity: 1; }
+  75%, 100% { transform: scale(2); opacity: 0; }
+}
+.ping-dot::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: currentColor;
+  animation: ping-dot 1s cubic-bezier(0, 0, 0.2, 1) infinite;
+}
+
+/* Message bubbles */
+.msg-bubble-sent {
+  @apply bg-gradient-to-br from-primary-500 to-secondary-500 text-white rounded-2xl rounded-br-md px-4 py-2.5 max-w-xs ml-auto;
+}
+.msg-bubble-received {
+  @apply bg-white border border-gray-100 text-gray-800 rounded-2xl rounded-bl-md px-4 py-2.5 max-w-xs shadow-sm;
+}
+
+/* Cover photo gradient overlay */
+.cover-overlay {
+  background: linear-gradient(to bottom, transparent 40%, rgba(0,0,0,0.5) 100%);
+}
+
+/* PIN input */
+.pin-input {
+  @apply w-14 h-14 text-center text-2xl font-bold rounded-xl border-2 border-gray-200 focus:border-primary-500 focus:ring-2 focus:ring-primary-200 outline-none transition-all;
+}
+
+/* Verified badge */
+.verified-badge {
+  @apply inline-flex items-center justify-center w-4 h-4 bg-primary-500 rounded-full text-white;
+}
