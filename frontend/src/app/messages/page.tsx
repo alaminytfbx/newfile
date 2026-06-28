@@ -1,6 +1,6 @@
 'use client';
-import { useState, useEffect, useRef } from 'react';
-import { useRouter, useSearchParams } from 'next/navigation';
+import { useState, useEffect, useRef, Suspense } from 'react';
+import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import { Send, ArrowLeft, MessageCircle, Shield, Eye, EyeOff, Loader2 } from 'lucide-react';
 import Header from '@/components/Header';
@@ -28,7 +28,6 @@ type PinStep = 'check' | 'create' | 'verify' | 'unlocked';
 
 export default function MessagesPage() {
   const router = useRouter();
-  const searchParams = useSearchParams();
   const [pinStep, setPinStep] = useState<PinStep>('check');
   const [pin, setPin] = useState(['', '', '', '']);
   const [pinVisible, setPinVisible] = useState(false);
